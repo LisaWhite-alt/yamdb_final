@@ -1,11 +1,11 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from api.views import (
-    email_confirmation,
     auth_token,
     CategoryViewSet,
     CommentViewSet,
+    email_confirmation,
     GenreViewSet,
     ReviewViewSet,
     TitlesViewSet,

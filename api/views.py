@@ -2,8 +2,8 @@ from django.contrib.auth.tokens import default_token_generator
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import mixins, status, viewsets, filters
-from rest_framework.decorators import api_view, action
+from rest_framework import filters, mixins, status, viewsets 
+from rest_framework.decorators import action, api_view 
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import (
     IsAuthenticated,
@@ -110,8 +110,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         title = get_object_or_404(Title, id=self.kwargs.get("title_id"))
-        queryset = title.reviews.all()
-        return queryset
+        return title.reviews.all()
 
     def perform_create(self, serializer):
         serializer.save(
@@ -133,8 +132,7 @@ class CommentViewSet(viewsets.ModelViewSet):
             id=self.kwargs.get("review_id"),
             title_id=self.kwargs.get("title_id")
         )
-        queryset = review.comments.all()
-        return queryset
+        return review.comments.all()
 
     def perform_create(self, serializer):
         serializer.save(

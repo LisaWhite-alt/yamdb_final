@@ -142,7 +142,7 @@ class Title(models.Model):
             f"Название {self.name}, год публикации {self.year}, жанр "
             f"{self.genre}, краткое описание: {self.description}, "
             f"из категории = {self.category}"
-        )    
+        )
 
 
 class Review(models.Model):
