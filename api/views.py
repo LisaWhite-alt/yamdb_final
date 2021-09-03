@@ -1,22 +1,3 @@
-from api.filters import TitleFilter
-from api.models import Category, Genre, Review, Title, User
-from api.permissions import (
-    IsAdmin,
-    IsAdminOrReadOnly,
-    IsAuthorOrAdminOrModeratorOrReadOnly
-)
-from api.serializers import (
-    AuthTokenSerializer,
-    CategorySerializer,
-    CommentSerializer,
-    EmailConfirmationCodeSerializer,
-    GenreSerializer,
-    ReviewSerializer,
-    TitleListSerializer,
-    TitleCreateSerializer,
-    UserSerializer
-)
-
 from django.contrib.auth.tokens import default_token_generator
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
@@ -24,13 +5,21 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, mixins, status, viewsets
 from rest_framework.decorators import action, api_view
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import (
-    IsAuthenticated,
-    IsAuthenticatedOrReadOnly
-)
+from rest_framework.permissions import (IsAuthenticated,
+                                        IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet, ModelViewSet
 from rest_framework_simplejwt.tokens import AccessToken
+
+from api.filters import TitleFilter
+from api.models import Category, Genre, Review, Title, User
+from api.permissions import (IsAdmin, IsAdminOrReadOnly,
+                             IsAuthorOrAdminOrModeratorOrReadOnly)
+from api.serializers import (AuthTokenSerializer, CategorySerializer,
+                             CommentSerializer,
+                             EmailConfirmationCodeSerializer, GenreSerializer,
+                             ReviewSerializer, TitleCreateSerializer,
+                             TitleListSerializer, UserSerializer)
 
 
 class CreateDestroyListViewSet(
