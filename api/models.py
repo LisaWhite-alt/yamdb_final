@@ -1,7 +1,7 @@
 from datetime import date
 
 from django.contrib.auth.models import AbstractUser
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from rest_framework.exceptions import ValidationError
 
@@ -86,14 +86,6 @@ class Genre(models.Model):
 
 
 class Title(models.Model):
-    def year_validate(value):
-        year_now = date.today().year
-        if not (1 <= value <= year_now):
-            raise ValidationError(
-                f"Год указан некорректно! "
-                f"Допускается укзание года от 1 до {year_now} (включительно)"
-            )
-
     name = models.CharField(
         "Название произведения",
         max_length=200,
@@ -138,12 +130,19 @@ class Title(models.Model):
         ordering = ("-year",)
 
     def __str__(self):
-        text = (
+        return (
             f"Название {self.name}, год публикации {self.year}, жанр "
             f"{self.genre}, краткое описание: {self.description}, "
             f"из категории = {self.category}"
         )
-        return text
+
+    def year_validate(self):
+        year_now = date.today().year
+        if not (1 <= self.year <= year_now):
+            raise ValidationError(
+                f"Год указан некорректно! "
+                f"Допускается укзание года от 1 до {year_now} (включительно)"
+            )
 
 
 class Review(models.Model):
