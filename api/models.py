@@ -86,6 +86,14 @@ class Genre(models.Model):
 
 
 class Title(models.Model):
+    def year_validate(self):
+        year_now = date.today().year
+        if not (1 <= self.year <= year_now):
+            raise ValidationError(
+                f"Год указан некорректно! "
+                f"Допускается укзание года от 1 до {year_now} (включительно)"
+            )
+
     name = models.CharField(
         "Название произведения",
         max_length=200,
@@ -134,15 +142,7 @@ class Title(models.Model):
             f"Название {self.name}, год публикации {self.year}, жанр "
             f"{self.genre}, краткое описание: {self.description}, "
             f"из категории = {self.category}"
-        )
-
-    def year_validate(self):
-        year_now = date.today().year
-        if not (1 <= self.year <= year_now):
-            raise ValidationError(
-                f"Год указан некорректно! "
-                f"Допускается укзание года от 1 до {year_now} (включительно)"
-            )
+        )    
 
 
 class Review(models.Model):
