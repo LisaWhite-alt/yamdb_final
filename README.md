@@ -1,2 +1,1 @@
-[![Django-app workflow Actions Status](https://github.com/LisaWhite-alt/yamdb_final
-/workflows/yamdb_workflow/badge.svg)](https://github.com/LisaWhite-alt/yamdb_final/actions)
+[![Django-app workflow](https://github.com/LisaWhite-alt/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)](https://github.com/LisaWhite-alt/yamdb_final/actions/workflows/yamdb_workflow.yml)
