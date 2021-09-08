@@ -140,9 +140,6 @@ dmypy.json
 .vscode/
 *.code-workspace
 
-# Local History for Visual Studio Code
-.history/
-
 .mypy_cache
 
 
