@@ -76,7 +76,7 @@ docker-compose exec web python manage.py migrate --run-syncdb
 
 ### Адрес для проверки работоспособности
 
-[Ссылка:](http://lisatube.co.vu/redoc)
+[Ссылка:](https://lisatube.co.vu/redoc)
 
 ### Автор
 
